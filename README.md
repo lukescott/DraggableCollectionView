@@ -8,7 +8,7 @@ Extension for the `UICollectionView` and `UICollectionViewLayout` that allows a 
 - Include UICollectionView+Draggable catagory (and related files).
 - Include QuartzCoreFramework.
 - Set `draggable` to true on collection view.
-- Set `collectionViewLayout` to a layout that implements the `UICollectionViewLayout_Warpable` protocol (will fallback if layout does not).
+- Set `collectionViewLayout` to a layout that implements the `UICollectionViewLayout_Warpable` protocol (will fallback if layout does not). For the default Flow layout (grid) use `DraggableCollectionViewFlowLayout` - you can set this in Interface Builder.
 - Implement the `UICollectionViewDataSource_Draggable` extended protocol.
 
 ## How it Works
