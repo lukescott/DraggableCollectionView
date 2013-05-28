@@ -1,0 +1,398 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8E947CA3175458980077D957 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E947CA2175458980077D957 /* UIKit.framework */; };
+		8E947CA5175458980077D957 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E947CA4175458980077D957 /* Foundation.framework */; };
+		8E947CA7175458980077D957 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E947CA6175458980077D957 /* CoreGraphics.framework */; };
+		8E947CD717545A2C0077D957 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E947CD617545A2C0077D957 /* QuartzCore.framework */; };
+		8E947CF717545E190077D957 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CE617545E190077D957 /* AppDelegate.m */; };
+		8E947CF817545E190077D957 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CE817545E190077D957 /* Cell.m */; };
+		8E947CF917545E190077D957 /* CircleLayoutDemo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CE917545E190077D957 /* CircleLayoutDemo-Info.plist */; };
+		8E947CFA17545E190077D957 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CEB17545E190077D957 /* Default-568h@2x.png */; };
+		8E947CFB17545E190077D957 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CEC17545E190077D957 /* Default.png */; };
+		8E947CFC17545E190077D957 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CED17545E190077D957 /* Default@2x.png */; };
+		8E947CFD17545E190077D957 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CEE17545E190077D957 /* InfoPlist.strings */; };
+		8E947CFE17545E190077D957 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CF017545E190077D957 /* MainStoryboard_iPad.storyboard */; };
+		8E947CFF17545E190077D957 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CF217545E190077D957 /* MainStoryboard_iPhone.storyboard */; };
+		8E947D0017545E190077D957 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CF417545E190077D957 /* main.m */; };
+		8E947D0117545E190077D957 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CF617545E190077D957 /* ViewController.m */; };
+		8E947D0F17545E740077D957 /* LSCollectionViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947D0517545E740077D957 /* LSCollectionViewHelper.m */; };
+		8E947D1017545E740077D957 /* LSCollectionViewLayoutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947D0717545E740077D957 /* LSCollectionViewLayoutHelper.m */; };
+		8E947D1117545E740077D957 /* DraggableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947D0A17545E740077D957 /* DraggableCollectionViewFlowLayout.m */; };
+		8E947D1217545E740077D957 /* UICollectionView+Draggable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947D0C17545E740077D957 /* UICollectionView+Draggable.m */; };
+		8E947D1817545F870077D957 /* CircleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947D1517545F190077D957 /* CircleLayout.m */; };
+		8E947D1917545F8A0077D957 /* DraggableCircleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947D1717545F190077D957 /* DraggableCircleLayout.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8E947C9F175458980077D957 /* CircleLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CircleLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E947CA2175458980077D957 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		8E947CA4175458980077D957 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8E947CA6175458980077D957 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		8E947CD617545A2C0077D957 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		8E947CE517545E190077D957 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8E947CE617545E190077D957 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8E947CE717545E190077D957 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
+		8E947CE817545E190077D957 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		8E947CE917545E190077D957 /* CircleLayoutDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CircleLayoutDemo-Info.plist"; sourceTree = "<group>"; };
+		8E947CEA17545E190077D957 /* CircleLayoutDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CircleLayoutDemo-Prefix.pch"; sourceTree = "<group>"; };
+		8E947CEB17545E190077D957 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8E947CEC17545E190077D957 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		8E947CED17545E190077D957 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8E947CEF17545E190077D957 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8E947CF117545E190077D957 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		8E947CF317545E190077D957 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		8E947CF417545E190077D957 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8E947CF517545E190077D957 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8E947CF617545E190077D957 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8E947D0417545E740077D957 /* LSCollectionViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewHelper.h; sourceTree = "<group>"; };
+		8E947D0517545E740077D957 /* LSCollectionViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewHelper.m; sourceTree = "<group>"; };
+		8E947D0617545E740077D957 /* LSCollectionViewLayoutHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewLayoutHelper.h; sourceTree = "<group>"; };
+		8E947D0717545E740077D957 /* LSCollectionViewLayoutHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewLayoutHelper.m; sourceTree = "<group>"; };
+		8E947D0917545E740077D957 /* DraggableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		8E947D0A17545E740077D957 /* DraggableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		8E947D0B17545E740077D957 /* UICollectionView+Draggable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+Draggable.h"; sourceTree = "<group>"; };
+		8E947D0C17545E740077D957 /* UICollectionView+Draggable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+Draggable.m"; sourceTree = "<group>"; };
+		8E947D0D17545E740077D957 /* UICollectionViewDataSource_Draggable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewDataSource_Draggable.h; sourceTree = "<group>"; };
+		8E947D0E17545E740077D957 /* UICollectionViewLayout_Warpable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLayout_Warpable.h; sourceTree = "<group>"; };
+		8E947D1417545F190077D957 /* CircleLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleLayout.h; sourceTree = "<group>"; };
+		8E947D1517545F190077D957 /* CircleLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleLayout.m; sourceTree = "<group>"; };
+		8E947D1617545F190077D957 /* DraggableCircleLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DraggableCircleLayout.h; sourceTree = "<group>"; };
+		8E947D1717545F190077D957 /* DraggableCircleLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DraggableCircleLayout.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8E947C9C175458980077D957 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E947CA3175458980077D957 /* UIKit.framework in Frameworks */,
+				8E947CA5175458980077D957 /* Foundation.framework in Frameworks */,
+				8E947CA7175458980077D957 /* CoreGraphics.framework in Frameworks */,
+				8E947CD717545A2C0077D957 /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8E947C96175458980077D957 = {
+			isa = PBXGroup;
+			children = (
+				8E947CE417545E190077D957 /* CircleLayoutDemo */,
+				8E947CA1175458980077D957 /* Frameworks */,
+				8E947CA0175458980077D957 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8E947CA0175458980077D957 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8E947C9F175458980077D957 /* CircleLayoutDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E947CA1175458980077D957 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E947CA2175458980077D957 /* UIKit.framework */,
+				8E947CA4175458980077D957 /* Foundation.framework */,
+				8E947CA6175458980077D957 /* CoreGraphics.framework */,
+				8E947CD617545A2C0077D957 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8E947CE417545E190077D957 /* CircleLayoutDemo */ = {
+			isa = PBXGroup;
+			children = (
+				8E947CE517545E190077D957 /* AppDelegate.h */,
+				8E947CE617545E190077D957 /* AppDelegate.m */,
+				8E947CF017545E190077D957 /* MainStoryboard_iPad.storyboard */,
+				8E947CF217545E190077D957 /* MainStoryboard_iPhone.storyboard */,
+				8E947CF517545E190077D957 /* ViewController.h */,
+				8E947CF617545E190077D957 /* ViewController.m */,
+				8E947CE717545E190077D957 /* Cell.h */,
+				8E947CE817545E190077D957 /* Cell.m */,
+				8E947D1617545F190077D957 /* DraggableCircleLayout.h */,
+				8E947D1717545F190077D957 /* DraggableCircleLayout.m */,
+				8E947D1417545F190077D957 /* CircleLayout.h */,
+				8E947D1517545F190077D957 /* CircleLayout.m */,
+				8E947D0217545E730077D957 /* DraggableCollectionView */,
+				8E947D1317545EB60077D957 /* Supporting Files */,
+			);
+			path = CircleLayoutDemo;
+			sourceTree = "<group>";
+		};
+		8E947D0217545E730077D957 /* DraggableCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				8E947D0317545E740077D957 /* Helpers */,
+				8E947D0817545E740077D957 /* Layout */,
+				8E947D0B17545E740077D957 /* UICollectionView+Draggable.h */,
+				8E947D0C17545E740077D957 /* UICollectionView+Draggable.m */,
+				8E947D0D17545E740077D957 /* UICollectionViewDataSource_Draggable.h */,
+				8E947D0E17545E740077D957 /* UICollectionViewLayout_Warpable.h */,
+			);
+			path = DraggableCollectionView;
+			sourceTree = SOURCE_ROOT;
+		};
+		8E947D0317545E740077D957 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8E947D0417545E740077D957 /* LSCollectionViewHelper.h */,
+				8E947D0517545E740077D957 /* LSCollectionViewHelper.m */,
+				8E947D0617545E740077D957 /* LSCollectionViewLayoutHelper.h */,
+				8E947D0717545E740077D957 /* LSCollectionViewLayoutHelper.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8E947D0817545E740077D957 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				8E947D0917545E740077D957 /* DraggableCollectionViewFlowLayout.h */,
+				8E947D0A17545E740077D957 /* DraggableCollectionViewFlowLayout.m */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		8E947D1317545EB60077D957 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8E947CE917545E190077D957 /* CircleLayoutDemo-Info.plist */,
+				8E947CEE17545E190077D957 /* InfoPlist.strings */,
+				8E947CF417545E190077D957 /* main.m */,
+				8E947CEA17545E190077D957 /* CircleLayoutDemo-Prefix.pch */,
+				8E947CEC17545E190077D957 /* Default.png */,
+				8E947CED17545E190077D957 /* Default@2x.png */,
+				8E947CEB17545E190077D957 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8E947C9E175458980077D957 /* CircleLayoutDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E947CC5175458980077D957 /* Build configuration list for PBXNativeTarget "CircleLayoutDemo" */;
+			buildPhases = (
+				8E947C9B175458980077D957 /* Sources */,
+				8E947C9C175458980077D957 /* Frameworks */,
+				8E947C9D175458980077D957 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CircleLayoutDemo;
+			productName = FlowLayoutDemo;
+			productReference = 8E947C9F175458980077D957 /* CircleLayoutDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E947C97175458980077D957 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Luke Scott";
+			};
+			buildConfigurationList = 8E947C9A175458980077D957 /* Build configuration list for PBXProject "CircleLayoutDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8E947C96175458980077D957;
+			productRefGroup = 8E947CA0175458980077D957 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8E947C9E175458980077D957 /* CircleLayoutDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8E947C9D175458980077D957 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E947CF917545E190077D957 /* CircleLayoutDemo-Info.plist in Resources */,
+				8E947CFA17545E190077D957 /* Default-568h@2x.png in Resources */,
+				8E947CFB17545E190077D957 /* Default.png in Resources */,
+				8E947CFC17545E190077D957 /* Default@2x.png in Resources */,
+				8E947CFD17545E190077D957 /* InfoPlist.strings in Resources */,
+				8E947CFE17545E190077D957 /* MainStoryboard_iPad.storyboard in Resources */,
+				8E947CFF17545E190077D957 /* MainStoryboard_iPhone.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8E947C9B175458980077D957 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E947CF717545E190077D957 /* AppDelegate.m in Sources */,
+				8E947CF817545E190077D957 /* Cell.m in Sources */,
+				8E947D0017545E190077D957 /* main.m in Sources */,
+				8E947D0117545E190077D957 /* ViewController.m in Sources */,
+				8E947D0F17545E740077D957 /* LSCollectionViewHelper.m in Sources */,
+				8E947D1017545E740077D957 /* LSCollectionViewLayoutHelper.m in Sources */,
+				8E947D1117545E740077D957 /* DraggableCollectionViewFlowLayout.m in Sources */,
+				8E947D1217545E740077D957 /* UICollectionView+Draggable.m in Sources */,
+				8E947D1817545F870077D957 /* CircleLayout.m in Sources */,
+				8E947D1917545F8A0077D957 /* DraggableCircleLayout.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8E947CEE17545E190077D957 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E947CEF17545E190077D957 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		8E947CF017545E190077D957 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E947CF117545E190077D957 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		8E947CF217545E190077D957 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E947CF317545E190077D957 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8E947CC3175458980077D957 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8E947CC4175458980077D957 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8E947CC6175458980077D957 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CircleLayoutDemo/CircleLayoutDemo-Prefix.pch";
+				INFOPLIST_FILE = "CircleLayoutDemo/CircleLayoutDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = CircleLayoutDemo;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		8E947CC7175458980077D957 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CircleLayoutDemo/CircleLayoutDemo-Prefix.pch";
+				INFOPLIST_FILE = "CircleLayoutDemo/CircleLayoutDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = CircleLayoutDemo;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8E947C9A175458980077D957 /* Build configuration list for PBXProject "CircleLayoutDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E947CC3175458980077D957 /* Debug */,
+				8E947CC4175458980077D957 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8E947CC5175458980077D957 /* Build configuration list for PBXNativeTarget "CircleLayoutDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8E947CC6175458980077D957 /* Debug */,
+				8E947CC7175458980077D957 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8E947C97175458980077D957 /* Project object */;
+}
