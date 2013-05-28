@@ -13,7 +13,6 @@
 		8E947CD717545A2C0077D957 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E947CD617545A2C0077D957 /* QuartzCore.framework */; };
 		8E947CF717545E190077D957 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CE617545E190077D957 /* AppDelegate.m */; };
 		8E947CF817545E190077D957 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CE817545E190077D957 /* Cell.m */; };
-		8E947CF917545E190077D957 /* CircleLayoutDemo-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CE917545E190077D957 /* CircleLayoutDemo-Info.plist */; };
 		8E947CFA17545E190077D957 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CEB17545E190077D957 /* Default-568h@2x.png */; };
 		8E947CFB17545E190077D957 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CEC17545E190077D957 /* Default.png */; };
 		8E947CFC17545E190077D957 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CED17545E190077D957 /* Default@2x.png */; };
@@ -229,7 +228,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E947CF917545E190077D957 /* CircleLayoutDemo-Info.plist in Resources */,
 				8E947CFA17545E190077D957 /* Default-568h@2x.png in Resources */,
 				8E947CFB17545E190077D957 /* Default.png in Resources */,
 				8E947CFC17545E190077D957 /* Default@2x.png in Resources */,
