@@ -6,35 +6,26 @@
 
 #import "DraggableCircleLayout.h"
 #import "LSCollectionViewLayoutHelper.h"
-#import <objc/runtime.h>
 
 @interface DraggableCircleLayout ()
 {
-    NSMutableDictionary *layoutCache;
-    NSMutableDictionary *cellMap;
+    LSCollectionViewLayoutHelper *_layoutHelper;
 }
 @end
 
 @implementation DraggableCircleLayout
 
-- (LSCollectionViewLayoutHelper *)getHelper
+- (LSCollectionViewLayoutHelper *)layoutHelper
 {
-    LSCollectionViewLayoutHelper *helper = objc_getAssociatedObject(self, "LSCollectionViewLayoutHelper");
-    if(helper == nil) {
-        helper = [[LSCollectionViewLayoutHelper alloc] initWithCollectionViewLayout:self];
-        objc_setAssociatedObject(self, "LSCollectionViewLayoutHelper", helper, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if(_layoutHelper == nil) {
+        _layoutHelper = [[LSCollectionViewLayoutHelper alloc] initWithCollectionViewLayout:self];
     }
-    return helper;
+    return _layoutHelper;
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
-    return [[self getHelper] modifiedLayoutAttributesForElements:[super layoutAttributesForElementsInRect:rect]];
-}
-
-- (NSIndexPath *)translateIndexPath:(NSIndexPath *)indexPath
-{
-    return [[self getHelper] translateIndexPath:indexPath];
+    return [self.layoutHelper modifiedLayoutAttributesForElements:[super layoutAttributesForElementsInRect:rect]];
 }
 
 @end

@@ -6,12 +6,9 @@
 
 #import <UIKit/UIKit.h>
 #import "UICollectionViewLayout_Warpable.h"
+#import "LSCollectionViewLayoutHelper.h"
 
 @interface DraggableCollectionViewFlowLayout : UICollectionViewFlowLayout <UICollectionViewLayout_Warpable>
 
-- (NSIndexPath *)translateIndexPath:(NSIndexPath *)indexPath;
-
-@property (strong, nonatomic) NSIndexPath *warpFromIndexPath;
-@property (strong, nonatomic) NSIndexPath *warpToIndexPath;
-@property (strong, nonatomic) NSIndexPath *hidenIndexPath;
+@property (readonly, nonatomic) LSCollectionViewLayoutHelper *layoutHelper;
 @end

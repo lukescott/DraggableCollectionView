@@ -6,12 +6,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class LSCollectionViewLayoutHelper;
+
 @protocol UICollectionViewLayout_Warpable <NSObject>
 @required
 
-- (NSIndexPath *)translateIndexPath:(NSIndexPath *)indexPath;
-
-@property (strong, nonatomic) NSIndexPath *warpFromIndexPath;
-@property (strong, nonatomic) NSIndexPath *warpToIndexPath;
-@property (strong, nonatomic) NSIndexPath *hidenIndexPath;
+@property (readonly, nonatomic) LSCollectionViewLayoutHelper *layoutHelper;
 @end

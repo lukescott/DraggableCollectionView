@@ -7,9 +7,13 @@
 #import "ViewController.h"
 #import "Cell.h"
 
+// NOTE: Multiple sections are not yet supported
+#define SECTION_COUNT 1
+#define ITEM_COUNT 100
+
 @interface ViewController ()
 {
-    NSMutableArray *data;
+    NSMutableArray *sections;
 }
 @end
 
@@ -19,22 +23,32 @@
 {
     [super viewDidLoad];
     
-    data = [[NSMutableArray alloc] initWithCapacity:100];
-    for(int i = 0; i < 100; i++) {
-        [data addObject:@(i)];
+    sections = [[NSMutableArray alloc] initWithCapacity:ITEM_COUNT];
+    for(int s = 0; s < SECTION_COUNT; s++) {
+        NSMutableArray *data = [[NSMutableArray alloc] initWithCapacity:ITEM_COUNT];
+        for(int i = 0; i < ITEM_COUNT; i++) {
+            [data addObject:[NSString stringWithFormat:@"%c %@", 65+s, @(i)]];
+        }
+        [sections addObject:data];
     }
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return sections.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 100;
+    return [[sections objectAtIndex:section] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     Cell *cell = (Cell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
-    NSNumber *index = [data objectAtIndex:indexPath.item];
-    cell.label.text = [NSString stringWithFormat:@"%d", index.integerValue];
+    NSMutableArray *data = [sections objectAtIndex:indexPath.section];
+    
+    cell.label.text = [data objectAtIndex:indexPath.item];
     
     return cell;
 }
@@ -46,9 +60,12 @@
 
 - (void)collectionView:(LSCollectionViewHelper *)collectionView moveItemAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-    NSNumber *index = [data objectAtIndex:fromIndexPath.item];
-    [data removeObjectAtIndex:fromIndexPath.item];
-    [data insertObject:index atIndex:toIndexPath.item];
+    NSMutableArray *data1 = [sections objectAtIndex:fromIndexPath.section];
+    NSMutableArray *data2 = [sections objectAtIndex:toIndexPath.section];
+    NSString *index = [data1 objectAtIndex:fromIndexPath.item];
+    
+    [data1 removeObjectAtIndex:fromIndexPath.item];
+    [data2 insertObject:index atIndex:toIndexPath.item];
 }
 
 @end

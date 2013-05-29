@@ -9,9 +9,5 @@
 
 @interface DraggableCircleLayout : CircleLayout <UICollectionViewLayout_Warpable>
 
-- (NSIndexPath *)translateIndexPath:(NSIndexPath *)indexPath;
-
-@property (strong, nonatomic) NSIndexPath *warpFromIndexPath;
-@property (strong, nonatomic) NSIndexPath *warpToIndexPath;
-@property (strong, nonatomic) NSIndexPath *hidenIndexPath;
+@property (readonly, nonatomic) LSCollectionViewLayoutHelper *layoutHelper;
 @end

@@ -8,7 +8,6 @@
 
 @interface LSCollectionViewLayoutHelper ()
 {
-    NSMutableDictionary *_layoutCache;
     NSMutableDictionary *_cellMap;
 }
 @end
@@ -20,7 +19,6 @@
     self = [super init];
     if (self) {
         _collectionViewLayout = collectionViewLayout;
-        _layoutCache = [[NSMutableDictionary alloc] init];
         _cellMap = [[NSMutableDictionary alloc] init];
     }
     return self;
@@ -28,11 +26,10 @@
 
 - (NSArray *)modifiedLayoutAttributesForElements:(NSArray *)elements
 {
-    NSIndexPath *fromIndexPath = self.collectionViewLayout.warpFromIndexPath;
-    NSIndexPath *toIndexPath = self.collectionViewLayout.warpToIndexPath;
-    NSIndexPath *hideIndexPath = self.collectionViewLayout.hidenIndexPath;
+    NSIndexPath *fromIndexPath = self.warpFromIndexPath;
+    NSIndexPath *toIndexPath = self.warpToIndexPath;
+    NSIndexPath *hideIndexPath = self.hidenIndexPath;
     
-    [_layoutCache removeAllObjects];
     [_cellMap removeAllObjects];
     
     for (UICollectionViewLayoutAttributes *layoutAttributes in elements) {
@@ -62,7 +59,6 @@
                 }
             }
             if([indexPath isEqual:layoutAttributes.indexPath] == NO) {
-                [_layoutCache setObject:layoutAttributes forKey:layoutAttributes.indexPath];
                 [_cellMap setObject:indexPath forKey:layoutAttributes.indexPath];
             }
         }

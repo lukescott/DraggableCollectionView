@@ -7,6 +7,7 @@
 #import "LSCollectionViewHelper.h"
 #import "UICollectionViewLayout_Warpable.h"
 #import "UICollectionViewDataSource_Draggable.h"
+#import "LSCollectionViewLayoutHelper.h"
 #import <QuartzCore/QuartzCore.h>
 
 static int kObservingCollectionViewLayoutContext;
@@ -156,7 +157,7 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
         return;
     }
     
-    id <UICollectionViewLayout_Warpable> layout = (id <UICollectionViewLayout_Warpable>)self.collectionView.collectionViewLayout;
+    LSCollectionViewLayoutHelper *layoutHelper = [(id <UICollectionViewLayout_Warpable>)self.collectionView.collectionViewLayout layoutHelper];
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[sender locationInView:self.collectionView]];
     
     switch (sender.state) {
@@ -186,8 +187,8 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
             
             // Start warping
             lastIndexPath = indexPath;
-            layout.warpFromIndexPath = fromIndexPath = indexPath;
-            layout.hidenIndexPath = layout.warpToIndexPath = toIndexPath = indexPath;
+            layoutHelper.warpFromIndexPath = fromIndexPath = indexPath;
+            layoutHelper.hidenIndexPath = layoutHelper.warpToIndexPath = toIndexPath = indexPath;
             [self.collectionView.collectionViewLayout invalidateLayout];
         } break;
         case UIGestureRecognizerStateEnded:
@@ -197,7 +198,7 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
             }
             UICollectionViewLayoutAttributes *layoutAttributes = [self.collectionView layoutAttributesForItemAtIndexPath:fromIndexPath];
             if(indexPath != nil) {
-                toIndexPath = [layout translateIndexPath:indexPath];
+                toIndexPath = [layoutHelper translateIndexPath:indexPath];
             }
             
             // Tell the data source to move the item
@@ -208,8 +209,8 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
             [CATransaction begin];
             [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
             // De-warp the collection view
-            layout.warpFromIndexPath = nil;
-            layout.warpToIndexPath = nil;
+            layoutHelper.warpFromIndexPath = nil;
+            layoutHelper.warpToIndexPath = nil;
             // Tell the collection view to move the item
             [self.collectionView moveItemAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
             [CATransaction commit];
@@ -224,7 +225,7 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
              completion:^(BOOL finished) {
                  [mockCell removeFromSuperview];
                 mockCell = nil;
-                 layout.hidenIndexPath = nil;
+                 layoutHelper.hidenIndexPath = nil;
                  [self.collectionView.collectionViewLayout invalidateLayout];
              }];
             
@@ -241,7 +242,7 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
 - (void)handlePanGesture:(UIPanGestureRecognizer *)sender
 {
     if(sender.state == UIGestureRecognizerStateChanged) {
-        id <UICollectionViewLayout_Warpable> layout = (id <UICollectionViewLayout_Warpable>)self.collectionView.collectionViewLayout;
+
         
         // Move mock to match finger
         fingerTranslation = [sender translationInView:self.collectionView];
@@ -249,7 +250,8 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
         
         // Scroll when necessary
         if (canScroll) {
-            if([(UICollectionViewFlowLayout*)layout scrollDirection] == UICollectionViewScrollDirectionVertical) {
+            UICollectionViewFlowLayout *scrollLayout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
+            if([scrollLayout scrollDirection] == UICollectionViewScrollDirectionVertical) {
                 if (mockCell.center.y < (CGRectGetMinY(self.collectionView.bounds) + self.scrollingEdgeInsets.top)) {
                     [self setupScrollTimerInDirection:_ScrollingDirectionUp];
                 }
@@ -281,15 +283,16 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
         }
         
         // Warp item to finger location
+        LSCollectionViewLayoutHelper *layoutHelper = [(id <UICollectionViewLayout_Warpable>)self.collectionView.collectionViewLayout layoutHelper];
         NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[sender locationInView:self.collectionView]];
         if (indexPath == nil) {
             return;
         }
         if(indexPath && ! [lastIndexPath isEqual:indexPath]) {
             lastIndexPath = indexPath;
-            toIndexPath = [layout translateIndexPath:indexPath];
+            toIndexPath = [layoutHelper translateIndexPath:indexPath];
             [self.collectionView performBatchUpdates:^{
-                layout.hidenIndexPath = layout.warpToIndexPath = toIndexPath;
+                layoutHelper.hidenIndexPath = layoutHelper.warpToIndexPath = toIndexPath;
             } completion:nil];
         }
     }
@@ -343,13 +346,13 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
     self.collectionView.contentOffset = _CGPointAdd(contentOffset, translation);
     
     // Warp items while scrolling
-    id <UICollectionViewLayout_Warpable> layout = (id <UICollectionViewLayout_Warpable>)self.collectionView.collectionViewLayout;
+    LSCollectionViewLayoutHelper *layoutHelper = [(id <UICollectionViewLayout_Warpable>)self.collectionView.collectionViewLayout layoutHelper];
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:mockCell.center];
     if(indexPath && ! [lastIndexPath isEqual:indexPath]) {
         lastIndexPath = indexPath;
-        toIndexPath = [layout translateIndexPath:indexPath];
+        toIndexPath = [layoutHelper translateIndexPath:indexPath];
         [self.collectionView performBatchUpdates:^{
-            layout.hidenIndexPath = layout.warpToIndexPath = toIndexPath;
+            layoutHelper.hidenIndexPath = layoutHelper.warpToIndexPath = toIndexPath;
         } completion:nil];
     }
 }
