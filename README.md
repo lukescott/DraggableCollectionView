@@ -19,10 +19,6 @@ It works just like `UITableView`. The extended protocol contains similarly named
 
 This extension can work with most custom layouts - just implement the `UICollectionViewLayout_Warpable` protocol. An easy way to do this is subclass your layout and feed the output from `layoutAttributesForElementsInRect` through `LSCollectionViewLayoutHelper`. For an example how to do this see `DraggableCollectionViewFlowLayout` - you can pretty much copy and paste from there. `DraggableCollectionViewFlowLayout` is included for Apple's default `UICollectionViewFlowLayout` (see FlowLayoutDemo). There is also CircleLayoutDemo for Apple's CircleLayout example from WWDC 2012.
 
-## TODO
-
-Multiple sections are not (yet) supported. I need to tweak the `modifiedLayoutAttributesForElements` method in `LSCollectionViewLayoutHelper` class to make it work.
-
 ## License
 
 DraggableCollectionView is available under the [MIT license](LICENSE).

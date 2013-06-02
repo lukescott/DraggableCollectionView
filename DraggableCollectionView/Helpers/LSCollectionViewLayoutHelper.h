@@ -17,5 +17,5 @@
 @property (nonatomic, weak, readonly) UICollectionViewLayout<UICollectionViewLayout_Warpable> *collectionViewLayout;
 @property (strong, nonatomic) NSIndexPath *warpFromIndexPath;
 @property (strong, nonatomic) NSIndexPath *warpToIndexPath;
-@property (strong, nonatomic) NSIndexPath *hidenIndexPath;
+@property (strong, nonatomic) NSIndexPath *hiddenIndexPath;
 @end

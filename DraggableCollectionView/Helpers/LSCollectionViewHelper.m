@@ -188,7 +188,7 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
             // Start warping
             lastIndexPath = indexPath;
             layoutHelper.warpFromIndexPath = fromIndexPath = indexPath;
-            layoutHelper.hidenIndexPath = layoutHelper.warpToIndexPath = toIndexPath = indexPath;
+            layoutHelper.hiddenIndexPath = layoutHelper.warpToIndexPath = toIndexPath = indexPath;
             [self.collectionView.collectionViewLayout invalidateLayout];
         } break;
         case UIGestureRecognizerStateEnded:
@@ -199,18 +199,21 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
             UICollectionViewLayoutAttributes *layoutAttributes = [self.collectionView layoutAttributesForItemAtIndexPath:fromIndexPath];
             if(indexPath != nil) {
                 toIndexPath = [layoutHelper translateIndexPath:indexPath];
+                
             }
+            // Unwarp items
+            layoutHelper.hiddenIndexPath = toIndexPath;
+            layoutHelper.warpFromIndexPath = nil;
+            layoutHelper.warpToIndexPath = nil;
+            [self.collectionView.collectionViewLayout invalidateLayout];
             
             // Tell the data source to move the item
             [(id<UICollectionViewDataSource_Draggable>)self.collectionView.dataSource collectionView:self.collectionView
                                                                               moveItemAtIndexPath:fromIndexPath
                                                                                       toIndexPath:toIndexPath];
-            // Prevent animations
+            // Prevent animation
             [CATransaction begin];
             [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-            // De-warp the collection view
-            layoutHelper.warpFromIndexPath = nil;
-            layoutHelper.warpToIndexPath = nil;
             // Tell the collection view to move the item
             [self.collectionView moveItemAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
             [CATransaction commit];
@@ -224,8 +227,8 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
              }
              completion:^(BOOL finished) {
                  [mockCell removeFromSuperview];
-                mockCell = nil;
-                 layoutHelper.hidenIndexPath = nil;
+                 mockCell = nil;
+                 layoutHelper.hiddenIndexPath = nil;
                  [self.collectionView.collectionViewLayout invalidateLayout];
              }];
             
@@ -292,7 +295,8 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
             lastIndexPath = indexPath;
             toIndexPath = [layoutHelper translateIndexPath:indexPath];
             [self.collectionView performBatchUpdates:^{
-                layoutHelper.hidenIndexPath = layoutHelper.warpToIndexPath = toIndexPath;
+                layoutHelper.hiddenIndexPath = toIndexPath;
+                layoutHelper.warpToIndexPath = toIndexPath;
             } completion:nil];
         }
     }
@@ -352,7 +356,8 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
         lastIndexPath = indexPath;
         toIndexPath = [layoutHelper translateIndexPath:indexPath];
         [self.collectionView performBatchUpdates:^{
-            layoutHelper.hidenIndexPath = layoutHelper.warpToIndexPath = toIndexPath;
+            layoutHelper.hiddenIndexPath = toIndexPath;
+            layoutHelper.warpToIndexPath = toIndexPath;
         } completion:nil];
     }
 }

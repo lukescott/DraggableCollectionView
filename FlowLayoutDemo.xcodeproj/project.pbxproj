@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E11CC4D1759BB55004D2284 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E11CC4B1759BB55004D2284 /* InfoPlist.strings */; };
+		8E11CC521759BB5E004D2284 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E11CC4E1759BB5E004D2284 /* MainStoryboard_iPad.storyboard */; };
+		8E11CC531759BB5E004D2284 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E11CC501759BB5E004D2284 /* MainStoryboard_iPhone.storyboard */; };
 		8E947CA3175458980077D957 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E947CA2175458980077D957 /* UIKit.framework */; };
 		8E947CA5175458980077D957 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E947CA4175458980077D957 /* Foundation.framework */; };
 		8E947CA7175458980077D957 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E947CA6175458980077D957 /* CoreGraphics.framework */; };
-		8E947CAD175458980077D957 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CAB175458980077D957 /* InfoPlist.strings */; };
 		8E947CAF175458980077D957 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CAE175458980077D957 /* main.m */; };
 		8E947CB3175458980077D957 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CB2175458980077D957 /* AppDelegate.m */; };
 		8E947CB5175458980077D957 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CB4175458980077D957 /* Default.png */; };
 		8E947CB7175458980077D957 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CB6175458980077D957 /* Default@2x.png */; };
 		8E947CB9175458980077D957 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CB8175458980077D957 /* Default-568h@2x.png */; };
-		8E947CBC175458980077D957 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CBA175458980077D957 /* MainStoryboard_iPhone.storyboard */; };
-		8E947CBF175458980077D957 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CBD175458980077D957 /* MainStoryboard_iPad.storyboard */; };
 		8E947CC2175458980077D957 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CC1175458980077D957 /* ViewController.m */; };
 		8E947CD31754593B0077D957 /* UICollectionView+Draggable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CCE1754593B0077D957 /* UICollectionView+Draggable.m */; };
 		8E947CD717545A2C0077D957 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E947CD617545A2C0077D957 /* QuartzCore.framework */; };
@@ -28,21 +28,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E11CC4C1759BB55004D2284 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8E11CC4F1759BB5E004D2284 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		8E11CC511759BB5E004D2284 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		8E947C9F175458980077D957 /* FlowLayoutDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlowLayoutDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E947CA2175458980077D957 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8E947CA4175458980077D957 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8E947CA6175458980077D957 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8E947CAA175458980077D957 /* FlowLayoutDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FlowLayoutDemo-Info.plist"; sourceTree = "<group>"; };
-		8E947CAC175458980077D957 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8E947CAE175458980077D957 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8E947CAE175458980077D957 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8E947CB0175458980077D957 /* FlowLayoutDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlowLayoutDemo-Prefix.pch"; sourceTree = "<group>"; };
 		8E947CB1175458980077D957 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8E947CB2175458980077D957 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		8E947CB4175458980077D957 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		8E947CB6175458980077D957 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		8E947CB8175458980077D957 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		8E947CBB175458980077D957 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		8E947CBE175458980077D957 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		8E947CC0175458980077D957 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8E947CC1175458980077D957 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8E947CCD1754593B0077D957 /* UICollectionView+Draggable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+Draggable.h"; sourceTree = "<group>"; };
@@ -108,8 +108,8 @@
 			children = (
 				8E947CB1175458980077D957 /* AppDelegate.h */,
 				8E947CB2175458980077D957 /* AppDelegate.m */,
-				8E947CBA175458980077D957 /* MainStoryboard_iPhone.storyboard */,
-				8E947CBD175458980077D957 /* MainStoryboard_iPad.storyboard */,
+				8E11CC4E1759BB5E004D2284 /* MainStoryboard_iPad.storyboard */,
+				8E11CC501759BB5E004D2284 /* MainStoryboard_iPhone.storyboard */,
 				8E947CC0175458980077D957 /* ViewController.h */,
 				8E947CC1175458980077D957 /* ViewController.m */,
 				8E947CD41754598E0077D957 /* Cell.h */,
@@ -124,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				8E947CAA175458980077D957 /* FlowLayoutDemo-Info.plist */,
-				8E947CAB175458980077D957 /* InfoPlist.strings */,
+				8E11CC4B1759BB55004D2284 /* InfoPlist.strings */,
 				8E947CAE175458980077D957 /* main.m */,
 				8E947CB0175458980077D957 /* FlowLayoutDemo-Prefix.pch */,
 				8E947CB4175458980077D957 /* Default.png */,
@@ -218,12 +218,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E947CAD175458980077D957 /* InfoPlist.strings in Resources */,
 				8E947CB5175458980077D957 /* Default.png in Resources */,
 				8E947CB7175458980077D957 /* Default@2x.png in Resources */,
 				8E947CB9175458980077D957 /* Default-568h@2x.png in Resources */,
-				8E947CBC175458980077D957 /* MainStoryboard_iPhone.storyboard in Resources */,
-				8E947CBF175458980077D957 /* MainStoryboard_iPad.storyboard in Resources */,
+				8E11CC4D1759BB55004D2284 /* InfoPlist.strings in Resources */,
+				8E11CC521759BB5E004D2284 /* MainStoryboard_iPad.storyboard in Resources */,
+				8E11CC531759BB5E004D2284 /* MainStoryboard_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,28 +248,28 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8E947CAB175458980077D957 /* InfoPlist.strings */ = {
+		8E11CC4B1759BB55004D2284 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8E947CAC175458980077D957 /* en */,
+				8E11CC4C1759BB55004D2284 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		8E947CBA175458980077D957 /* MainStoryboard_iPhone.storyboard */ = {
+		8E11CC4E1759BB5E004D2284 /* MainStoryboard_iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				8E947CBB175458980077D957 /* en */,
-			);
-			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		8E947CBD175458980077D957 /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8E947CBE175458980077D957 /* en */,
+				8E11CC4F1759BB5E004D2284 /* en */,
 			);
 			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		8E11CC501759BB5E004D2284 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8E11CC511759BB5E004D2284 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

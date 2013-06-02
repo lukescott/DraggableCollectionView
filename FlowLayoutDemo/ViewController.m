@@ -8,8 +8,8 @@
 #import "Cell.h"
 
 // NOTE: Multiple sections are not yet supported
-#define SECTION_COUNT 1
-#define ITEM_COUNT 100
+#define SECTION_COUNT 3
+#define ITEM_COUNT 20
 
 @interface ViewController ()
 {
