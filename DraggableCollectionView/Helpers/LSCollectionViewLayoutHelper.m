@@ -82,7 +82,7 @@
             if(layoutAttributes.representedElementCategory != UICollectionElementCategoryCell) {
                 continue;
             }
-            // Migrate item in source section to target section
+            // Remove item in source section and insert item in target section
             if([layoutAttributes.indexPath isEqual:indexPathToRemove]) {
                 layoutAttributes.indexPath = indexPathToInsert;
                 layoutAttributes.center = insertLayoutAttributes.center;
@@ -105,7 +105,6 @@
             }
             if ([indexPath isEqual:hideIndexPath]) {
                 layoutAttributes.hidden = YES;
-                layoutAttributes.alpha = 0.5;
             }
         }
     }
