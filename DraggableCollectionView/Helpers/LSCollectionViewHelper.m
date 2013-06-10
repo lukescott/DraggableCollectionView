@@ -196,28 +196,22 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
             if(fromIndexPath == nil) {
                 return;
             }
-            UICollectionViewLayoutAttributes *layoutAttributes = [self.collectionView layoutAttributesForItemAtIndexPath:fromIndexPath];
             if(indexPath != nil) {
                 toIndexPath = [layoutHelper translateIndexPath:indexPath];
-                
             }
-            // Unwarp items
+            // Unwarp items - don't invalidateLayout yet
             layoutHelper.hiddenIndexPath = toIndexPath;
             layoutHelper.warpFromIndexPath = nil;
             layoutHelper.warpToIndexPath = nil;
-            [self.collectionView.collectionViewLayout invalidateLayout];
             
             // Tell the data source to move the item
             [(id<UICollectionViewDataSource_Draggable>)self.collectionView.dataSource collectionView:self.collectionView
                                                                               moveItemAtIndexPath:fromIndexPath
                                                                                       toIndexPath:toIndexPath];
-            // Prevent animation
-            [CATransaction begin];
-            [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-            // Tell the collection view to move the item
+            // Tell the collection view to move the item - triggers invalidateLayout
             [self.collectionView moveItemAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
-            [CATransaction commit];
             
+            UICollectionViewLayoutAttributes *layoutAttributes = [self.collectionView layoutAttributesForItemAtIndexPath:toIndexPath];
             // Switch from mock to item
             [UIView
              animateWithDuration:0.3
