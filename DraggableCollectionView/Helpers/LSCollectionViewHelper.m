@@ -199,20 +199,23 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
             if(indexPath != nil) {
                 toIndexPath = [layoutHelper translateIndexPath:indexPath];
             }
-            // Unwarp items - don't invalidateLayout yet
-            layoutHelper.hiddenIndexPath = toIndexPath;
-            layoutHelper.warpFromIndexPath = nil;
-            layoutHelper.warpToIndexPath = nil;
-            
+
             // Tell the data source to move the item
             [(id<UICollectionViewDataSource_Draggable>)self.collectionView.dataSource collectionView:self.collectionView
                                                                               moveItemAtIndexPath:fromIndexPath
                                                                                       toIndexPath:toIndexPath];
-            // Tell the collection view to move the item - triggers invalidateLayout
-            [self.collectionView moveItemAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
             
+            // Move the item
+            [CATransaction begin];
+            [self.collectionView performBatchUpdates:^{
+                [self.collectionView moveItemAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
+                layoutHelper.hiddenIndexPath = toIndexPath;
+                layoutHelper.warpFromIndexPath = nil;
+                layoutHelper.warpToIndexPath = nil;
+            } completion:nil];
+            
+            // Switch mock for cell
             UICollectionViewLayoutAttributes *layoutAttributes = [self.collectionView layoutAttributesForItemAtIndexPath:toIndexPath];
-            // Switch from mock to item
             [UIView
              animateWithDuration:0.3
              animations:^{
@@ -225,6 +228,7 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
                  layoutHelper.hiddenIndexPath = nil;
                  [self.collectionView.collectionViewLayout invalidateLayout];
              }];
+            [CATransaction commit];
             
             // Reset
             [self invalidatesScrollTimer];
