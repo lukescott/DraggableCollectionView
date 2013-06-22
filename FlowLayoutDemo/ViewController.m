@@ -7,7 +7,6 @@
 #import "ViewController.h"
 #import "Cell.h"
 
-// NOTE: Multiple sections are not yet supported
 #define SECTION_COUNT 3
 #define ITEM_COUNT 20
 
@@ -55,6 +54,15 @@
 
 - (BOOL)collectionView:(LSCollectionViewHelper *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    return YES;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)toIndexPath
+{
+// Prevent item from being moved to index 0
+//    if (toIndexPath.item == 0) {
+//        return NO;
+//    }
     return YES;
 }
 

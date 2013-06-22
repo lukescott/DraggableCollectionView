@@ -196,9 +196,6 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
             if(fromIndexPath == nil) {
                 return;
             }
-            if(indexPath != nil) {
-                toIndexPath = [layoutHelper translateIndexPath:indexPath];
-            }
 
             // Tell the data source to move the item
             [(id<UICollectionViewDataSource_Draggable>)self.collectionView.dataSource collectionView:self.collectionView
@@ -238,6 +235,30 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
         } break;
         default: break;
     }
+}
+
+- (void)warpToIndexPath:(NSIndexPath *)indexPath
+{
+    LSCollectionViewLayoutHelper *layoutHelper = [(id <UICollectionViewLayout_Warpable>)self.collectionView.collectionViewLayout layoutHelper];
+    if(indexPath == nil || [lastIndexPath isEqual:indexPath]) {
+        return;
+    }
+    lastIndexPath = indexPath;
+    
+    NSIndexPath *realIndexPath = [layoutHelper translateIndexPath:indexPath];
+    if ([self.collectionView.dataSource respondsToSelector:@selector(collectionView:canMoveItemAtIndexPath:toIndexPath:)] == YES
+        && [(id<UICollectionViewDataSource_Draggable>)self.collectionView.dataSource
+            collectionView:self.collectionView
+            canMoveItemAtIndexPath:fromIndexPath
+            toIndexPath:realIndexPath] == NO) {
+        return;
+    }
+    
+    toIndexPath = realIndexPath;
+    [self.collectionView performBatchUpdates:^{
+        layoutHelper.hiddenIndexPath = toIndexPath;
+        layoutHelper.warpToIndexPath = toIndexPath;
+    } completion:nil];
 }
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)sender
@@ -284,19 +305,9 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
         }
         
         // Warp item to finger location
-        LSCollectionViewLayoutHelper *layoutHelper = [(id <UICollectionViewLayout_Warpable>)self.collectionView.collectionViewLayout layoutHelper];
-        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[sender locationInView:self.collectionView]];
-        if (indexPath == nil) {
-            return;
-        }
-        if(indexPath && ! [lastIndexPath isEqual:indexPath]) {
-            lastIndexPath = indexPath;
-            toIndexPath = [layoutHelper translateIndexPath:indexPath];
-            [self.collectionView performBatchUpdates:^{
-                layoutHelper.hiddenIndexPath = toIndexPath;
-                layoutHelper.warpToIndexPath = toIndexPath;
-            } completion:nil];
-        }
+        CGPoint point = [sender locationInView:self.collectionView];
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:point];
+        [self warpToIndexPath:indexPath];
     }
 }
 
@@ -348,16 +359,8 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
     self.collectionView.contentOffset = _CGPointAdd(contentOffset, translation);
     
     // Warp items while scrolling
-    LSCollectionViewLayoutHelper *layoutHelper = [(id <UICollectionViewLayout_Warpable>)self.collectionView.collectionViewLayout layoutHelper];
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:mockCell.center];
-    if(indexPath && ! [lastIndexPath isEqual:indexPath]) {
-        lastIndexPath = indexPath;
-        toIndexPath = [layoutHelper translateIndexPath:indexPath];
-        [self.collectionView performBatchUpdates:^{
-            layoutHelper.hiddenIndexPath = toIndexPath;
-            layoutHelper.warpToIndexPath = toIndexPath;
-        } completion:nil];
-    }
+    [self warpToIndexPath:indexPath];
 }
 
 @end
