@@ -12,10 +12,9 @@
 - (id)initWithCollectionViewLayout:(UICollectionViewLayout<UICollectionViewLayout_Warpable>*)collectionViewLayout;
 
 - (NSArray *)modifiedLayoutAttributesForElements:(NSArray *)elements;
-- (NSIndexPath *)translateIndexPath:(NSIndexPath *)indexPath;
 
 @property (nonatomic, weak, readonly) UICollectionViewLayout<UICollectionViewLayout_Warpable> *collectionViewLayout;
-@property (strong, nonatomic) NSIndexPath *warpFromIndexPath;
-@property (strong, nonatomic) NSIndexPath *warpToIndexPath;
-@property (strong, nonatomic) NSIndexPath *hiddenIndexPath;
+@property (strong, nonatomic) NSIndexPath *fromIndexPath;
+@property (strong, nonatomic) NSIndexPath *toIndexPath;
+@property (strong, nonatomic) NSIndexPath *hideIndexPath;
 @end

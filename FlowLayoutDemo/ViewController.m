@@ -7,7 +7,7 @@
 #import "ViewController.h"
 #import "Cell.h"
 
-#define SECTION_COUNT 3
+#define SECTION_COUNT 5
 #define ITEM_COUNT 20
 
 @interface ViewController ()

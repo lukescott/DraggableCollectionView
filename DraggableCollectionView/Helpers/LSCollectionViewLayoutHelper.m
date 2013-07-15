@@ -7,9 +7,7 @@
 #import "LSCollectionViewLayoutHelper.h"
 
 @interface LSCollectionViewLayoutHelper ()
-{
-    NSMutableDictionary *_cellMap;
-}
+
 @end
 
 @implementation LSCollectionViewLayoutHelper
@@ -19,105 +17,79 @@
     self = [super init];
     if (self) {
         _collectionViewLayout = collectionViewLayout;
-        _cellMap = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
 - (NSArray *)modifiedLayoutAttributesForElements:(NSArray *)elements
 {
-    NSIndexPath *fromIndexPath = self.warpFromIndexPath;
-    NSIndexPath *toIndexPath = self.warpToIndexPath;
-    NSIndexPath *hideIndexPath = self.hiddenIndexPath;
-    
-    [_cellMap removeAllObjects];
+    UICollectionView *collectionView = self.collectionViewLayout.collectionView;
+    NSIndexPath *fromIndexPath = self.fromIndexPath;
+    NSIndexPath *toIndexPath = self.toIndexPath;
+    NSIndexPath *hideIndexPath = self.hideIndexPath;
+    NSIndexPath *indexPathToRemove;
     
     if (toIndexPath == nil) {
+        if (hideIndexPath == nil) {
+            return elements;
+        }
         for (UICollectionViewLayoutAttributes *layoutAttributes in elements) {
+            if(layoutAttributes.representedElementCategory != UICollectionElementCategoryCell) {
+                continue;
+            }
             if ([layoutAttributes.indexPath isEqual:hideIndexPath]) {
                 layoutAttributes.hidden = YES;
             }
         }
+        return elements;
     }
-    // Item moved to different place in same section
-    else if(fromIndexPath.section == toIndexPath.section) {
-        for (UICollectionViewLayoutAttributes *layoutAttributes in elements) {
-            if(layoutAttributes.representedElementCategory != UICollectionElementCategoryCell) {
-                continue;
-            }
-            NSIndexPath *indexPath = layoutAttributes.indexPath;
-            // Leave other sections alone
-            if (indexPath.section != fromIndexPath.section) {
-                continue;
-            }
-            // Item's new location
-            if([indexPath isEqual:toIndexPath]) {
-                layoutAttributes.indexPath = fromIndexPath;
-            }
-            // Item moved back
-            else if(indexPath.item <= fromIndexPath.item && indexPath.item > toIndexPath.item) {
-                layoutAttributes.indexPath = [NSIndexPath indexPathForItem:indexPath.item - 1 inSection:indexPath.section];
-            }
-            // Item item moved forward
-            else if(indexPath.item >= fromIndexPath.item && indexPath.item < toIndexPath.item) {
-                layoutAttributes.indexPath = [NSIndexPath indexPathForItem:indexPath.item + 1 inSection:indexPath.section];
-            }            
-            if([indexPath isEqual:layoutAttributes.indexPath] == NO) {
-                [_cellMap setObject:indexPath forKey:layoutAttributes.indexPath];
-            }
-            if ([indexPath isEqual:hideIndexPath]) {
-                layoutAttributes.hidden = YES;
-            }
+    
+    if (fromIndexPath.section != toIndexPath.section) {
+        indexPathToRemove = [NSIndexPath indexPathForItem:[collectionView numberOfItemsInSection:fromIndexPath.section] - 1
+                                                inSection:fromIndexPath.section];
+    }
+    
+    for (UICollectionViewLayoutAttributes *layoutAttributes in elements) {
+        if(layoutAttributes.representedElementCategory != UICollectionElementCategoryCell) {
+            continue;
         }
-    }
-    // Item moved to different section
-    else {
-        NSInteger sourceSectionCount = [self.collectionViewLayout.collectionView numberOfItemsInSection:fromIndexPath.section];
-        NSInteger targetSectionCount = [self.collectionViewLayout.collectionView numberOfItemsInSection:toIndexPath.section];
-        NSIndexPath *indexPathToRemove = [NSIndexPath indexPathForItem:sourceSectionCount - 1 inSection:fromIndexPath.section];
-        NSIndexPath *indexPathToInsert = [NSIndexPath indexPathForItem:targetSectionCount inSection:toIndexPath.section];
-        UICollectionViewLayoutAttributes *insertLayoutAttributes = [self.collectionViewLayout layoutAttributesForItemAtIndexPath:indexPathToInsert];
-        
-        for (UICollectionViewLayoutAttributes *layoutAttributes in elements) {
-            if(layoutAttributes.representedElementCategory != UICollectionElementCategoryCell) {
-                continue;
-            }
+        if([layoutAttributes.indexPath isEqual:indexPathToRemove]) {
             // Remove item in source section and insert item in target section
-            if([layoutAttributes.indexPath isEqual:indexPathToRemove]) {
-                layoutAttributes.indexPath = indexPathToInsert;
-                layoutAttributes.center = insertLayoutAttributes.center;
-            }
-            NSIndexPath *indexPath = layoutAttributes.indexPath;
+            layoutAttributes.indexPath = [NSIndexPath indexPathForItem:[collectionView numberOfItemsInSection:toIndexPath.section]
+                                                             inSection:toIndexPath.section];
+            layoutAttributes.center = [self.collectionViewLayout layoutAttributesForItemAtIndexPath:layoutAttributes.indexPath].center;
+        }
+        NSIndexPath *indexPath = layoutAttributes.indexPath;
+        if ([indexPath isEqual:hideIndexPath]) {
+            layoutAttributes.hidden = YES;
+        }
+        if([indexPath isEqual:toIndexPath]) {
             // Item's new location
-            if([indexPath isEqual:toIndexPath]) {
-                layoutAttributes.indexPath = fromIndexPath;
-            }
-            // Change indexes in source section
-            else if(indexPath.section == fromIndexPath.section && indexPath.item >= fromIndexPath.item) {
+            layoutAttributes.indexPath = fromIndexPath;
+        }
+        else if(fromIndexPath.section != toIndexPath.section) {
+            if(indexPath.section == fromIndexPath.section && indexPath.item >= fromIndexPath.item) {
+                // Change indexes in source section
                 layoutAttributes.indexPath = [NSIndexPath indexPathForItem:indexPath.item + 1 inSection:indexPath.section];
             }
-            // Change indexes in destination section
             else if(indexPath.section == toIndexPath.section && indexPath.item >= toIndexPath.item) {
+                // Change indexes in destination section
                 layoutAttributes.indexPath = [NSIndexPath indexPathForItem:indexPath.item - 1 inSection:indexPath.section];
             }
-            if([indexPath isEqual:layoutAttributes.indexPath] == NO) {
-                [_cellMap setObject:indexPath forKey:layoutAttributes.indexPath];
+        }
+        else if(indexPath.section == fromIndexPath.section) {
+            if(indexPath.item <= fromIndexPath.item && indexPath.item > toIndexPath.item) {
+                // Item moved back
+                layoutAttributes.indexPath = [NSIndexPath indexPathForItem:indexPath.item - 1 inSection:indexPath.section];
             }
-            if ([indexPath isEqual:hideIndexPath]) {
-                layoutAttributes.hidden = YES;
+            else if(indexPath.item >= fromIndexPath.item && indexPath.item < toIndexPath.item) {
+                // Item item moved forward
+                layoutAttributes.indexPath = [NSIndexPath indexPathForItem:indexPath.item + 1 inSection:indexPath.section];
             }
         }
     }
+    
     return elements;
-}
-
-- (NSIndexPath *)translateIndexPath:(NSIndexPath *)indexPath
-{
-    NSIndexPath *lookupIndexPath = [_cellMap objectForKey:indexPath];
-    if(lookupIndexPath) {
-        return lookupIndexPath;
-    }
-    return indexPath;
 }
 
 @end

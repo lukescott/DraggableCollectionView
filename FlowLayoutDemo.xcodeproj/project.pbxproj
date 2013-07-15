@@ -20,11 +20,11 @@
 		8E947CB9175458980077D957 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E947CB8175458980077D957 /* Default-568h@2x.png */; };
 		8E947CC2175458980077D957 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CC1175458980077D957 /* ViewController.m */; };
 		8E947CD31754593B0077D957 /* UICollectionView+Draggable.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CCE1754593B0077D957 /* UICollectionView+Draggable.m */; };
-		8E947CD717545A2C0077D957 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E947CD617545A2C0077D957 /* QuartzCore.framework */; };
 		8E947CD817545AF10077D957 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CD51754598E0077D957 /* Cell.m */; };
 		8E947CDC17545C100077D957 /* DraggableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CDB17545C100077D957 /* DraggableCollectionViewFlowLayout.m */; };
 		8E947CE217545C370077D957 /* LSCollectionViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CDF17545C370077D957 /* LSCollectionViewHelper.m */; };
 		8E947CE317545C370077D957 /* LSCollectionViewLayoutHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E947CE117545C370077D957 /* LSCollectionViewLayoutHelper.m */; };
+		8E955E881793ADF5008F72D9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E955E871793ADF5008F72D9 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,13 +51,13 @@
 		8E947CD01754593B0077D957 /* UICollectionViewLayout_Warpable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLayout_Warpable.h; sourceTree = "<group>"; };
 		8E947CD41754598E0077D957 /* Cell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
 		8E947CD51754598E0077D957 /* Cell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
-		8E947CD617545A2C0077D957 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8E947CDA17545C100077D957 /* DraggableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		8E947CDB17545C100077D957 /* DraggableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		8E947CDE17545C370077D957 /* LSCollectionViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewHelper.h; sourceTree = "<group>"; };
 		8E947CDF17545C370077D957 /* LSCollectionViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewHelper.m; sourceTree = "<group>"; };
 		8E947CE017545C370077D957 /* LSCollectionViewLayoutHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSCollectionViewLayoutHelper.h; sourceTree = "<group>"; };
 		8E947CE117545C370077D957 /* LSCollectionViewLayoutHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSCollectionViewLayoutHelper.m; sourceTree = "<group>"; };
+		8E955E871793ADF5008F72D9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +68,7 @@
 				8E947CA3175458980077D957 /* UIKit.framework in Frameworks */,
 				8E947CA5175458980077D957 /* Foundation.framework in Frameworks */,
 				8E947CA7175458980077D957 /* CoreGraphics.framework in Frameworks */,
-				8E947CD717545A2C0077D957 /* QuartzCore.framework in Frameworks */,
+				8E955E881793ADF5008F72D9 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 				8E947CA2175458980077D957 /* UIKit.framework */,
 				8E947CA4175458980077D957 /* Foundation.framework */,
 				8E947CA6175458980077D957 /* CoreGraphics.framework */,
-				8E947CD617545A2C0077D957 /* QuartzCore.framework */,
+				8E955E871793ADF5008F72D9 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
