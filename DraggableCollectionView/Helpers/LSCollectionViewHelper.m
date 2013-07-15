@@ -183,9 +183,22 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
         }
         NSInteger items = [self.collectionView numberOfItemsInSection:i];
         NSIndexPath *nextIndexPath = [NSIndexPath indexPathForItem:items inSection:i];
-        UICollectionViewLayoutAttributes *layoutAttr = [self.collectionView.collectionViewLayout layoutAttributesForItemAtIndexPath:nextIndexPath];
-        CGFloat xd = layoutAttr.center.x - point.x;
-        CGFloat yd = layoutAttr.center.y - point.y;
+        UICollectionViewLayoutAttributes *layoutAttr;
+        CGFloat xd, yd;
+        
+        if (items > 0) {
+            layoutAttr = [self.collectionView.collectionViewLayout layoutAttributesForItemAtIndexPath:nextIndexPath];
+            xd = layoutAttr.center.x - point.x;
+            yd = layoutAttr.center.y - point.y;
+        } else {
+            // Trying to use layoutAttributesForItemAtIndexPath while section is empty causes EXC_ARITHMETIC (division by zero items)
+            // So we're going to ask for the header instead. It doesn't have to exist.
+            layoutAttr = [self.collectionView.collectionViewLayout layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                                                  atIndexPath:nextIndexPath];
+            xd = layoutAttr.frame.origin.x - point.x;
+            yd = layoutAttr.frame.origin.y - point.y;
+        }
+        
         NSInteger dist = sqrtf(xd*xd + yd*yd);
         if (dist < closestDist) {
             closestDist = dist;
@@ -250,7 +263,6 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
                                                                                       toIndexPath:self.layoutHelper.toIndexPath];
             
             // Move the item
-            //[CATransaction begin];
             [self.collectionView performBatchUpdates:^{
                 [self.collectionView moveItemAtIndexPath:self.layoutHelper.fromIndexPath toIndexPath:self.layoutHelper.toIndexPath];
                 self.layoutHelper.fromIndexPath = nil;
@@ -271,7 +283,6 @@ typedef NS_ENUM(NSInteger, _ScrollingDirection) {
                  self.layoutHelper.hideIndexPath = nil;
                  [self.collectionView.collectionViewLayout invalidateLayout];
              }];
-            //[CATransaction commit];
             
             // Reset
             [self invalidatesScrollTimer];

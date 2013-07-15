@@ -57,7 +57,9 @@
             // Remove item in source section and insert item in target section
             layoutAttributes.indexPath = [NSIndexPath indexPathForItem:[collectionView numberOfItemsInSection:toIndexPath.section]
                                                              inSection:toIndexPath.section];
-            layoutAttributes.center = [self.collectionViewLayout layoutAttributesForItemAtIndexPath:layoutAttributes.indexPath].center;
+            if (layoutAttributes.indexPath.item != 0) {
+                layoutAttributes.center = [self.collectionViewLayout layoutAttributesForItemAtIndexPath:layoutAttributes.indexPath].center;
+            }
         }
         NSIndexPath *indexPath = layoutAttributes.indexPath;
         if ([indexPath isEqual:hideIndexPath]) {
@@ -83,7 +85,7 @@
                 layoutAttributes.indexPath = [NSIndexPath indexPathForItem:indexPath.item - 1 inSection:indexPath.section];
             }
             else if(indexPath.item >= fromIndexPath.item && indexPath.item < toIndexPath.item) {
-                // Item item moved forward
+                // Item moved forward
                 layoutAttributes.indexPath = [NSIndexPath indexPathForItem:indexPath.item + 1 inSection:indexPath.section];
             }
         }
